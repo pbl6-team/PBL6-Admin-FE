@@ -12,8 +12,6 @@ import {
 } from "lucide-react";
 
 import { NavLink } from "react-router-dom";
-const activeClassName =
-  "py-2 bg-gray-100 text-gray-900 hover:bg-gray-100/80 dark:bg-gray-800 dark:text-gray-50 dark:hover:bg-gray-800/80";
 
 export function UtilityBar() {
   return (
@@ -33,13 +31,22 @@ export function UtilityBar() {
               ).replace("justify-center", "") + " w-full justify-start"
             }
           >
-              <AreaChart className="mr-2 h-4 w-4" />
-              Dashboard
+            <AreaChart className="mr-2 h-4 w-4" />
+            Dashboard
           </NavLink>
-          <Button variant="ghost" className="w-full justify-start">
+
+          <NavLink
+            to="/admin-account"
+            className={({ isActive }) =>
+              (isActive
+                ? buttonVariants({ variant: "secondary" })
+                : buttonVariants({ variant: "ghost" })
+              ).replace("justify-center", "") + " w-full justify-start"
+            }
+          >
             <User className="mr-2 h-4 w-4" />
             Admin Accounts
-          </Button>
+          </NavLink>
 
           <NavLink
             to="/user-management"
@@ -53,10 +60,19 @@ export function UtilityBar() {
             <Users className="mr-2 h-4 w-4" /> User Management
           </NavLink>
 
-          <Button variant="ghost" className="w-full justify-start">
+          <NavLink
+            to="/workspace"
+            className={({ isActive }) =>
+              (isActive
+                ? buttonVariants({ variant: "secondary" })
+                : buttonVariants({ variant: "ghost" })
+              ).replace("justify-center", "") + " w-full justify-start"
+            }
+          >
             <Presentation className="mr-2 h-4 w-4" />
             Workspaces
-          </Button>
+          </NavLink>
+
           <NavLink
             to="/notification"
             className={({ isActive }) =>
@@ -96,14 +112,23 @@ export function UtilityBar() {
             Subcriptions
           </NavLink>
 
-          <Button variant="ghost" className="w-full justify-start">
+          <NavLink
+            to="/role-management"
+            className={({ isActive }) =>
+              (isActive
+                ? buttonVariants({ variant: "secondary" })
+                : buttonVariants({ variant: "ghost" })
+              ).replace("justify-center", "") + " w-full justify-start"
+            }
+          >
             <ShieldCheck className="mr-2 h-4 w-4" />
             Roles
-          </Button>
-          <Button variant="ghost" className="w-full justify-start">
+          </NavLink>
+          
+          {/* <Button variant="ghost" className="w-full justify-start">
             <MessageSquare className="mr-2 h-4 w-4" />
             Messages
-          </Button>
+          </Button> */}
         </div>
       </div>
     </div>

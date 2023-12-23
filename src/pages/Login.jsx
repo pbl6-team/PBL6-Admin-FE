@@ -15,8 +15,8 @@ import { useNavigate } from "react-router-dom";
 export default function Login() {
   const navigate = useNavigate();
   return (
-    <div className="relative flex flex-col justify-center items-center bg-[rgb(238,242,246)] min-h-screen overflow-hidden">
-      <Card className="py-5 w-full m-auto bg-white lg:max-w-lg shadow-xl">
+    <div className="relative flex flex-col justify-center items-center bg-[rgb(238,242,246)] min-h-screen overflow-hidden px-2">
+      <Card className="py-5 w-full m-auto bg-white sm:max-w-sm lg:max-w-lg shadow-xl">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl text-center">Sign in</CardTitle>
           <CardDescription className="text-center">

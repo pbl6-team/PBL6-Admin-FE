@@ -1,4 +1,6 @@
 import { Button } from "../../../components/ui/button";
+import { ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import {
   Card,
   CardContent,
@@ -17,9 +19,20 @@ export default function DetailSubscription() {
   return (
     <Card>
       <CardHeader>
+      <header className="text-sm flex items-center gap-1">
+          <Link className="text-[#0055B4]" to={"/"}>
+            Home
+          </Link>
+          <ChevronRight className="w-4 h-4 text-gray-700" />
+          <Link className="text-[#0055B4]" to={"/subscription"}>
+            Subscriptions
+          </Link>
+          <ChevronRight className="w-4 h-4 text-gray-700" />
+          <span>Detail</span>
+        </header>
       </CardHeader>
-      <CardContent className="grid gap-4">
-        <div className="grid grid-cols-6 gap-x-6">
+      <CardContent className="grid gap-4 font-sans">
+        <div className="grid grid-cols-1 sm:grid-cols-6 gap-x-6 gap-y-6">
           <Avatar className="grid grid-cols-1 h-16 w-16">
             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
             <AvatarFallback>AV</AvatarFallback>
@@ -34,7 +47,7 @@ export default function DetailSubscription() {
           </div>
         </div>
 
-        <div className="grid grid-cols-4 gap-x-16">
+        <div className="grid sm:grid-cols-4 gap-x-16 gap-y-6">
           <div className="grid gap-2">
             <Label htmlFor="serviceName">Service Name</Label>
             <Input id="serviceName" value="Gói tân thủ" readOnly={true} />
@@ -57,7 +70,7 @@ export default function DetailSubscription() {
             </Badge>
           </div>
         </div>
-        <div className="grid grid-cols-3">
+        <div className="grid sm:grid-cols-3">
           <PaymentCard className="grid col-span-2"/>
         </div>
       </CardContent>

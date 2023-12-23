@@ -13,8 +13,9 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import UserInformation from "./UserInformation";
 import LockUnlockDialog from "../../components/LockUnLockDialog";
+import AdminInformation from "./AdminInformation";
+
 
 const data = [
   {
@@ -22,35 +23,16 @@ const data = [
     phone: "0123456789",
     email: "abc@gmail.com",
     username: "abc",
-    status: "online",
+    status: "active",
+    role: "General Manager",
   },
   {
     name: "Name 1",
     phone: "0123456789",
     email: "abc@gmail.com",
     username: "abc",
-    status: "offline",
-  },
-  {
-    name: "Name 1",
-    phone: "0123456789",
-    email: "abc@gmail.com",
-    username: "abc",
-    status: "locked",
-  },
-  {
-    name: "Name 1",
-    phone: "0123456789",
-    email: "abc@gmail.com",
-    username: "abc",
-    status: "online",
-  },
-  {
-    name: "Name 1",
-    phone: "0123456789",
-    email: "abc@gmail.com",
-    username: "abc",
-    status: "offline",
+    status: "active",
+    role: "Workspace Manager",
   },
   {
     name: "Name 1",
@@ -58,17 +40,19 @@ const data = [
     email: "abc@gmail.com",
     username: "abc",
     status: "locked",
+    role: "General Manager",
   },
   {
     name: "Name 1",
     phone: "0123456789",
     email: "abc@gmail.com",
     username: "abc",
-    status: "online",
+    status: "active",
+    role: "User Manager",
   },
 ];
 
-export default function UserTable(props) {
+export default function AdminAccountTable(props) {
   return (
     <Table className="border">
       <TableHeader>
@@ -77,6 +61,7 @@ export default function UserTable(props) {
           <TableHead>Phone</TableHead>
           <TableHead>Email</TableHead>
           <TableHead>username</TableHead>
+          <TableHead>Role</TableHead>
           <TableHead>Status</TableHead>
           <TableHead></TableHead>
           <TableHead></TableHead>
@@ -90,12 +75,15 @@ export default function UserTable(props) {
             <TableCell className="underline">{user.email}</TableCell>
             <TableCell>{user.username}</TableCell>
             <TableCell>
-              {user.status === "online" ? (
-                <Badge className="bg-green-600 hover:bg-green-700">online</Badge>
-              ) : user.status === "offline" ? (
-                <Badge className="bg-gray-600">offline</Badge>
+              <span>{user.role}</span>
+            </TableCell>
+            <TableCell>
+              {user.status === "active" ? (
+                <Badge className="bg-green-600 hover:bg-green-700 w-12">
+                  active
+                </Badge>
               ) : (
-                <Badge className="bg-red-600 hover:bg-red-700">locked</Badge>
+                <Badge className="bg-red-600 hover:bg-red-700 w-12">locked</Badge>
               )}
             </TableCell>
 
@@ -104,7 +92,7 @@ export default function UserTable(props) {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <div className="w-6">
-                      <UserInformation status={user.status}/>
+                      <AdminInformation status={user.status} />
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>

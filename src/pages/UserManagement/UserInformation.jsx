@@ -32,7 +32,7 @@ export default function UserInformation(props) {
           <DialogTitle className="text-center">Information</DialogTitle>
         </DialogHeader>
 
-        <div className="grid grid-rows-3 grid-flow-col gap-4">
+        <div className="grid grid-rows-3 grid-cols-1 sm:grid-flow-col gap-4">
           <div className="row-span-3 grid grid-rows-3 gap-y-1">
             <div className="grid grid-cols-1 row-span-2">
               <div className="flex flex-col items-center gap-y-2">

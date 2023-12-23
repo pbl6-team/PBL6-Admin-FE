@@ -19,7 +19,7 @@ export default function CreateNotification() {
         <Button>Create</Button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-[600px]">
+      <DialogContent className="sm:max-w-3xl">
         <DialogHeader>
           <DialogTitle>Create Notification</DialogTitle>
           <DialogDescription>

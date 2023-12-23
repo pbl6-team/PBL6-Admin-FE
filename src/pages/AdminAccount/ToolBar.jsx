@@ -1,8 +1,6 @@
 import { Input } from "../../components/ui/input";
 import { Search } from "lucide-react";
 import { Button } from "../../components/ui/button";
-import { DatePicker } from "../../components/datePicker";
-import { DatePickerWithRange } from "../../components/dateRangePicker"
 import {
   Select,
   SelectContent,
@@ -11,9 +9,11 @@ import {
   SelectValue,
 } from "../../components/ui/select";
 
+import CreateDialog from "./CreateDialog";
+
 export default function ToolBar(props) {
   return (
-    <div className="flex gap-y-2 items-start flex-col sm:flex-row sm:justify-between px-4 py-2">
+    <div className="flex justify-between px-4 py-2 items-center">
       <div className="flex w-full max-w-sm items-center space-x-2">
         <Input type="text" placeholder="search" />
         <Button variant="outline">
@@ -23,16 +23,15 @@ export default function ToolBar(props) {
 
       <Select>
         <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder="Action" />
+          <SelectValue placeholder="Status" />
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="all">All</SelectItem>
-          <SelectItem value="light">Tạo workspace</SelectItem>
-          <SelectItem value="dark">Xóa workspace</SelectItem>
-          <SelectItem value="dark">Xóa user</SelectItem>
+          <SelectItem value="light">Lock</SelectItem>
+          <SelectItem value="dark">Unlock</SelectItem>
         </SelectContent>
       </Select>
-      <DatePickerWithRange />
+      <CreateDialog />
     </div>
   );
 }

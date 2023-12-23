@@ -5,7 +5,7 @@ import Chart1 from "./Chart1";
 export default function () {
   return (
     <MainLayout title={"Dashboard"}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:grid-cols-3">
             <Box1 />
             <Box1 />
             <Box2 />

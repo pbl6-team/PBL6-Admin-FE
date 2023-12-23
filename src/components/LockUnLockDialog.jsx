@@ -15,10 +15,10 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { UnlockKeyhole, LockKeyhole } from "lucide-react";
+import { UnlockKeyhole, LockKeyhole, Check } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 
-export default function LockUnlockDialog(props) {
+export default function LockUnlockDialog(props) { // props = { status: "locked" } || { status: "unlocked" }
   const { toast } = useToast();
   return (
     <AlertDialog>
@@ -35,7 +35,7 @@ export default function LockUnlockDialog(props) {
               </div>
             </TooltipTrigger>
             <TooltipContent>
-              {props.status === "locked" ? "Unlock Account" : "Lock Account"}
+              {props.status === "locked" ? "Unlock " : "Lock "} this {props.name}
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
@@ -45,7 +45,7 @@ export default function LockUnlockDialog(props) {
         <AlertDialogHeader>
           <AlertDialogTitle>
             Are you sure {props.status === "locked" ? "unlock" : "lock"} this
-            Account?
+            {props.name}?
           </AlertDialogTitle>
           <AlertDialogDescription>
             This action cannot be undone. This will permanently delete your
@@ -57,7 +57,15 @@ export default function LockUnlockDialog(props) {
           <AlertDialogAction
             onClick={() => {
               toast({
-                title: `Account has been ${props.status === "locked" ? "unlocked" : "locked"}`,
+                title: (
+                  <div className="flex items-center">
+                    <Check className="w-6 h-6 mr-2 text-green-500" />
+                    <span className="text-green-500">
+                      {props.name} has been
+                      {props.status === "locked" ? " unlocked" : " locked"}
+                    </span>
+                  </div>
+                ),
               });
             }}
           >

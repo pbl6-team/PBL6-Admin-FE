@@ -10,25 +10,69 @@ import {
 } from "../../components/ui/select";
 
 import CreateDialog from "./CreateDialog";
+import { useEffect, useState } from "react";
+import searchUser from "../../api/userManagement/searchUser";
+import getUsers from "../../api/userManagement/getUsers";
 
-export default function ToolBar(props) {
+export default function ToolBar({ setData, search, setSearch, setIsSearch, setPage, setTotalPages, status, setStatus }) {
+
+  const fetchData = async () => {
+    if (search === "") {
+      const response = await getUsers(1, 10, status);
+      setPage(1);
+      setTotalPages(response.data.totalPages);
+      setData(response.data.items);
+      setIsSearch(false);
+    } else {
+      setIsSearch(true);
+      const response = await searchUser(search, 1, 10, status);
+      setPage(1);
+      setTotalPages(response.data.totalPages);
+      console.log(response);
+      setData(response.data.items);
+    }
+  };
+
+  const fetchDataByStatus = async (val) => {
+    setStatus(val);
+    if (search === "") {
+      const response = await getUsers(1, 10, val);
+      console.log(response);
+      setPage(1);
+      setTotalPages(response.data.totalPages);
+      setData(response.data.items);
+      setIsSearch(false);
+    } else {
+      setIsSearch(true);
+      const response = await searchUser(search, 1, 10, val);
+      setPage(1);
+      setTotalPages(response.data.totalPages);
+      console.log(response);
+      setData(response.data.items);
+    }
+  };
+
   return (
     <div className="flex justify-between px-4 py-2 items-center">
       <div className="flex w-full max-w-sm items-center space-x-2">
-        <Input type="text" placeholder="search" />
-        <Button variant="outline">
+        <Input
+          type="text"
+          placeholder="search"
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <Button variant="outline" onClick={() => fetchData()}>
           <Search className="h-4 w-4" />
         </Button>
       </div>
 
-      <Select>
+      <Select onValueChange={val => fetchDataByStatus(val)}>
         <SelectTrigger className="w-[180px]">
           <SelectValue placeholder="Status" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="all">All</SelectItem>
-          <SelectItem value="light">Hoạt động</SelectItem>
-          <SelectItem value="dark">Không hoạt động</SelectItem>
+          <SelectItem value="0">All</SelectItem>
+          <SelectItem value="1">Active</SelectItem>
+          <SelectItem value="2">Blocked</SelectItem>
         </SelectContent>
       </Select>
 

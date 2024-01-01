@@ -7,8 +7,21 @@ import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import getWorkspaceById from "../../api/workspace/getWorkspaceById";
 
 export default function WorkspaceDetail() {
+  const { id } = useParams();
+  const [workspace, setWorkspace] = useState({});
+
+  useEffect(() => {
+    async function fetchData() {
+      const result = await getWorkspaceById(id);
+      setWorkspace(result.data);
+    }
+    fetchData();
+  }, []);
   return (
     <div className="bg-[rgb(238,242,246)] rounded-md">
       <div className="px-4 py-2 space-y-7 rounded-md bg-white">
@@ -42,13 +55,13 @@ export default function WorkspaceDetail() {
               <Label className="font-semibold">Workspace Name</Label>
               <Input
                 type="text"
-                value="Workspace Name"
-                onChange={(e) => setRoleName(e.target.value)}
+                value={workspace.name}
+                readOnly={true}
               />
             </div>
             <div className="col-span-3 space-y-2">
               <Label className="font-semibold">Workspace Description</Label>
-              <Textarea value="Workspace Description" />
+              <Textarea value={workspace.description} readOnly={true}/>
             </div>
             <div className="col-span-1 space-x-8 flex items-center">
               <Label className="font-semibold"> Allow Active</Label>

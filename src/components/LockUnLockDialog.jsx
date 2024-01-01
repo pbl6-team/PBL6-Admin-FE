@@ -16,10 +16,9 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { UnlockKeyhole, LockKeyhole, Check } from "lucide-react";
-import { useToast } from "@/components/ui/use-toast";
+import { toast } from "react-toastify";
 
-export default function LockUnlockDialog(props) { // props = { status: "locked" } || { status: "unlocked" }
-  const { toast } = useToast();
+export default function LockUnlockDialog({ id, status, name, setDataTable, handleUpdate }) {
   return (
     <AlertDialog>
       <AlertDialogTrigger>
@@ -27,7 +26,7 @@ export default function LockUnlockDialog(props) { // props = { status: "locked" 
           <Tooltip>
             <TooltipTrigger asChild>
               <div className="">
-                {props.status === "locked" ? (
+                {status === 2 ? (
                   <UnlockKeyhole className="w-6 h-6 p-1 text-green-800" />
                 ) : (
                   <LockKeyhole className="w-6 h-6 p-1 text-red-800" />
@@ -35,7 +34,7 @@ export default function LockUnlockDialog(props) { // props = { status: "locked" 
               </div>
             </TooltipTrigger>
             <TooltipContent>
-              {props.status === "locked" ? "Unlock " : "Lock "} this {props.name}
+              {status === 2 ? "Unlock " : "Lock "} this {name}
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
@@ -44,8 +43,8 @@ export default function LockUnlockDialog(props) { // props = { status: "locked" 
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>
-            Are you sure {props.status === "locked" ? "unlock" : "lock"} this
-            {props.name}?
+            Are you sure {status === 2 ? "unlock" : "lock"} this{" "}
+            {name}?
           </AlertDialogTitle>
           <AlertDialogDescription>
             This action cannot be undone. This will permanently delete your
@@ -56,16 +55,26 @@ export default function LockUnlockDialog(props) { // props = { status: "locked" 
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
             onClick={() => {
-              toast({
-                title: (
-                  <div className="flex items-center">
-                    <Check className="w-6 h-6 mr-2 text-green-500" />
-                    <span className="text-green-500">
-                      {props.name} has been
-                      {props.status === "locked" ? " unlocked" : " locked"}
-                    </span>
-                  </div>
-                ),
+              async function update() {
+                const result = await handleUpdate(id, (status === 2 ? 1 : 2));
+                console.log(result);
+              }
+              update();
+              
+              setDataTable((prev) => {
+                const dataUpdate = prev.find((data) => data.id === id);
+                dataUpdate.status  === 2 ? (dataUpdate.status = 1) : (dataUpdate.status = 2);
+                return [...prev];
+              });
+              toast.success(`${name} has been ${status === "locked" ? " unlocked" : " locked"}`, {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
               });
             }}
           >

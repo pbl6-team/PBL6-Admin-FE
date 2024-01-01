@@ -1,4 +1,4 @@
-import Login from "./pages/Login";
+import Login from "./pages/Auth/Login";
 import Notification from "./pages/Notification";
 import AdminAccount from "./pages/AdminAccount";
 import UserManagement from "./pages/UserManagement";
@@ -15,6 +15,8 @@ import RoleSection from "./pages/RoleManagement/RoleSection";
 import CreateRole from "./pages/RoleManagement/CreateRole";
 import { Toaster } from "@/components/ui/toaster";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const router = createBrowserRouter([
   {
@@ -54,7 +56,7 @@ const router = createBrowserRouter([
         element: <WorkspaceSection />,
       },
       {
-        path: "detail",
+        path: ":id",
         element: <WorkspaceDetail />,
       },
     ],
@@ -85,16 +87,27 @@ const router = createBrowserRouter([
         path: "create",
         element: <CreateRole />,
       },
-    ]
+    ],
   },
 ]);
 
-import FakeJson from "./pages/FakeJson";
 function App() {
   return (
     <>
       <RouterProvider router={router} />
       <Toaster />
+      <ToastContainer
+        position="top-center"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </>
   );
 }

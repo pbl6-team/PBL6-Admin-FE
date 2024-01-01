@@ -31,7 +31,7 @@ export default function ToolBar(props) {
           <SelectItem value="dark">Unlock</SelectItem>
         </SelectContent>
       </Select>
-      <CreateDialog />
+      <CreateDialog setLoadData={props.setLoadData}/>
     </div>
   );
 }

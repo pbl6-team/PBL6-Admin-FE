@@ -18,7 +18,7 @@ export default async function ({ path, params = "", method = "GET", headers = {}
       if (!checkRefreshTokenTimeOut()) {
          console.log("da chay refresh token");
          const refreshToken = localStorage.getItem("refreshToken");
-         const res = await fetch(`${config.apiURL}/auth/refreshToken`, {
+         let res = await fetch(`${config.apiURL}/auth/refreshToken`, {
             method: "POST",
             headers: {
                "x-apikey": config.apiKey,

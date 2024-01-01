@@ -57,7 +57,6 @@ jobs:
       
       - name: Deploy to Server
         run: |
-          cd src
           tar -czvf dist.tar.gz ./dist/*
           scp dist.tar.gz ${{ env.SERVER_USER }}@${{ env.SERVER_IP }}:${{ env.DEPLOYMENT_PATH }}/src/
           sshpass -p ${{ env.SERVER_PASSWORD }} ssh fira@firar.live 'echo "${{ env.SERVER_PASSWORD }}" | sudo -S bash ${{ env.DEPLOYMENT_PATH }}/restart.sh'

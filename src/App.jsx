@@ -2,7 +2,7 @@ import Login from "./pages/Auth/Login";
 import Notification from "./pages/Notification";
 import AdminAccount from "./pages/AdminAccount";
 import UserManagement from "./pages/UserManagement";
-import Subscription from "./pages/subscription";
+import Subscription from "./pages/Subscription";
 import Subscriber from "./pages/Subscription/Subscriber";
 import DetailSubscription from "./pages/Subscription/DetailSubscription";
 import Dashboard from "./pages/Dashboard";

@@ -1,6 +1,6 @@
 import { TitleMenu } from "../../components/titleMenu";
 import { NotificationTable } from "./NotificationTable";
-import { Paginate } from "./Paginate";
+import { Paginate } from "../../components/Paginate";
 import { useState } from "react";
 import { useOpenUtilityBarStore } from "@/stores/useOpenUtilityBar";
 

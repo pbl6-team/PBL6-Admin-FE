@@ -35,7 +35,7 @@ export function UtilityBar() {
             Dashboard
           </NavLink>
 
-          <NavLink
+          {(localStorage.getItem("userId") === "5bd1119a-d7c0-4e0d-e7c5-08dbfe6cf64e") &&<NavLink
             to="/admin-account"
             className={({ isActive }) =>
               (isActive
@@ -46,7 +46,7 @@ export function UtilityBar() {
           >
             <User className="mr-2 h-4 w-4" />
             Admin Accounts
-          </NavLink>
+          </NavLink>}
 
           <NavLink
             to="/user-management"
@@ -86,7 +86,7 @@ export function UtilityBar() {
             Notifications
           </NavLink>
 
-          <NavLink
+          {/* <NavLink
             to="/activity-history"
             className={({ isActive }) =>
               (isActive
@@ -97,9 +97,9 @@ export function UtilityBar() {
           >
             <FileClock className="mr-2 h-4 w-4" />
             Activity History
-          </NavLink>
+          </NavLink> */}
 
-          <NavLink
+          {/* <NavLink
             to="/subscription"
             className={({ isActive }) =>
               (isActive
@@ -110,9 +110,9 @@ export function UtilityBar() {
           >
             <UserCheck className="mr-2 h-4 w-4" />
             Subcriptions
-          </NavLink>
+          </NavLink> */}
 
-          <NavLink
+          {/* <NavLink
             to="/role-management"
             className={({ isActive }) =>
               (isActive
@@ -123,7 +123,7 @@ export function UtilityBar() {
           >
             <ShieldCheck className="mr-2 h-4 w-4" />
             Roles
-          </NavLink>
+          </NavLink> */}
           
           {/* <Button variant="ghost" className="w-full justify-start">
             <MessageSquare className="mr-2 h-4 w-4" />

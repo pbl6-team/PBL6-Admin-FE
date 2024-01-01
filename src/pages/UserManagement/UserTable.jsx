@@ -26,7 +26,7 @@ export default function UserTable({ data, setData, isSearch, page, setPage, tota
   useEffect(() => {
     const fetchData = async () => {
       const response = await getUsers(page, 10);
-      console.log(response);
+      console.log("user table: ", response);
       setData(response.data.items);
       setTotalPages(response.data.totalPages);
     };

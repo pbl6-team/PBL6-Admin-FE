@@ -65,7 +65,7 @@ export default function AdminAccountTable(props) {
         </TableHeader>
         <TableBody>
           {data.map((admin, index) => (
-            <TableRow key={admin.name}>
+            <TableRow key={admin.id}>
               <TableCell className="font-medium">
                 {(page - 1) * 10 + index + 1}
               </TableCell>

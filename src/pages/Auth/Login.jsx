@@ -29,7 +29,11 @@ export default function Login() {
     console.log(response);
     if (response.status === 200) {
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("tokenTimeOut", response.data.tokenTimeOut);
       localStorage.setItem("userId", response.data.userId);
+      localStorage.setItem("refreshToken", response.data.refreshToken);
+      localStorage.setItem("refreshTokenTimeOut", response.data.refreshTokenTimeOut);
+      console.log(response.data);
       navigate("/dashboard");
       toast.success("Login to success", {
         position: "top-center",
@@ -80,6 +84,7 @@ export default function Login() {
               id="password"
               type="password"
               onChange={(e) => setPassword(e.target.value)}
+              onKeyPress={(e) => {if (e.key === 'Enter') handleLogin()}}
             />
           </div>
           <div className="flex justify-between">

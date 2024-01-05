@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Pencil, UnlockKeyhole, LockKeyhole } from "lucide-react";
+import { Pencil, UnlockKeyhole, LockKeyhole, GanttChartSquare } from "lucide-react";
 import getUserById from "../../api/userManagement/getUserById";
 import { useEffect, useState } from "react";
 import updateUser from "../../api/userManagement/updateUser";
@@ -96,7 +96,7 @@ export default function UserInformation(props) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Pencil className="w-6 h-6 p-1 cursor-pointer" />
+      <GanttChartSquare className="w-4 h-4 cursor-pointer" />
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-[512px]">

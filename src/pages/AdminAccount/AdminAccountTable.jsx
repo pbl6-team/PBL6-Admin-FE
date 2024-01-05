@@ -19,6 +19,7 @@ import getAdmins from "../../api/adminManagement/getAdmins";
 import { useEffect, useState } from "react";
 import { Paginate } from "../../components/Paginate";
 import updateAdmin from "../../api/adminManagement/updateAdmin";
+import { GanttChartSquare } from "lucide-react";
 
 export default function AdminAccountTable(props) {
   const [data, setData] = useState([]);
@@ -90,7 +91,7 @@ export default function AdminAccountTable(props) {
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <div className="w-6">
-                        <AdminInformation status={admin.status} />
+                      <GanttChartSquare className="w-4 h-4 cursor-pointer" />
                       </div>
                     </TooltipTrigger>
                     <TooltipContent>

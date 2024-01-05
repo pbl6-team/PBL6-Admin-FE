@@ -3,51 +3,51 @@ import Chart from "react-apexcharts";
 const data = [
   {
     name: "Jan",
-    value: 100,
+    value: 7,
   },
   {
     name: "Feb",
-    value: 120,
+    value: 12,
   },
   {
     name: "Mar",
-    value: 90,
+    value: 5,
   },
   {
     name: "Apr",
-    value: 150,
+    value: 4,
   },
   {
     name: "May",
-    value: 80,
+    value: 8,
   },
   {
     name: "Jun",
-    value: 200,
+    value: 2,
   },
   {
     name: "Jul",
-    value: 100,
+    value: 1,
   },
   {
     name: "Aug",
-    value: 120,
+    value: 6,
   },
   {
     name: "Sep",
-    value: 90,
+    value: 3,
   },
   {
     name: "Oct",
-    value: 150,
+    value: 6,
   },
   {
     name: "Nov",
-    value: 80,
+    value: 7,
   },
   {
     name: "Dec",
-    value: 190,
+    value: 4,
   },
 ];
 export default function Chart1({ className }) {
@@ -58,7 +58,7 @@ export default function Chart1({ className }) {
           <span className="text-sm font-normal text-gray-500">
             Total Workspace
           </span>
-          <span className="text-lg font-semibold text-gray-700">20</span>
+          <span className="text-lg font-semibold text-gray-700">52</span>
         </div>
         <div className="flex items-center">
           <div className="w-3 h-3 bg-[#1E88E5] rounded-full mr-2"></div>

@@ -73,7 +73,7 @@ export function UtilityBar() {
             Workspaces
           </NavLink>
 
-          <NavLink
+          {/* <NavLink
             to="/notification"
             className={({ isActive }) =>
               (isActive
@@ -84,7 +84,7 @@ export function UtilityBar() {
           >
             <Bell className="mr-2 h-4 w-4" />
             Notifications
-          </NavLink>
+          </NavLink> */}
 
           {/* <NavLink
             to="/activity-history"

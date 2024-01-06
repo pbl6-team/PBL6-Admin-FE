@@ -9,7 +9,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import getWorkspaces from "../../api/workspace/getWorkspaces";
-import searchWorkspace from "../../api/Workspace/searchWorkspace";
+import searchWorkspace from "../../api/workspace/searchWorkspace";
 
 export default function ToolBar({ setData, search, setSearch, setIsSearch, setPage, setTotalPages, status, setStatus }) {
   

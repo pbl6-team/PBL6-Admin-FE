@@ -1,6 +1,8 @@
-export default async function searchWorkspace(searchValue, numberOfResults, status = 0) {
+import myFetch from "../myFetch"
+
+export default async function searchWorkspace(searchValue, page, pageSize, status = 0) {
     const res = await myFetch({
-        path: `workspace/search/${searchValue}/${numberOfResults}/status/${status}`,
+        path: `workspace/search/${searchValue}/page/${page}/size/${pageSize}/status/${status}`,
         method: "GET"
     })
     if (!res.ok) return {

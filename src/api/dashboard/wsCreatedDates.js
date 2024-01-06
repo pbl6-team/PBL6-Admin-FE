@@ -1,8 +1,8 @@
-import myFetch from "../myFetch"
+import myFetch from "../myFetch";
 
-export default async function searchUser(searchValue, page, pageSize, status = 0) {
+export default async function wsCreatedDates() {
     const res = await myFetch({
-        path: `user/search/${searchValue}/page/${page}/size/${pageSize}/status/${status}`,
+        path: `dashboard/workspace-created-dates`,
         method: "GET"
     })
     if (!res.ok) return {

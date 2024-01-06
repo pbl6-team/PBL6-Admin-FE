@@ -26,6 +26,7 @@ export default async function ({ path, params = "", method = "GET", headers = {}
             },
             body: JSON.stringify({ refreshToken: refreshToken }),
          });
+         console.log("res refresh token", res)
          if (res.ok) {
             const data = await res.json();
             console.log(data);
@@ -33,9 +34,11 @@ export default async function ({ path, params = "", method = "GET", headers = {}
             localStorage.setItem("refreshToken", data.refreshToken);
             localStorage.setItem("tokenTimeOut", data.tokenTimeOut);
             localStorage.setItem("refreshTokenTimeOut", data.refreshTokenTimeOut);
+            res = await fetch(`${config.apiURL}/${path}`, request);
+            return res
          }
-         res = await fetch(`${config.apiURL}/${path}?${params}`, request);
-         return res
+         location.href = "/Login";
+         return;
       }
       // OneSignal.logout()
       location.href = "/Login";

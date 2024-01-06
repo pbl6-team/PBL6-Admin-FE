@@ -1,6 +1,8 @@
-export default async function searchAdmin(searchValue, numberOfResults, status = 0) {
+import myFetch from "../myFetch"
+
+export default async function searchAdmin(searchValue, page, pageSize, status = 0) {
     const res = await myFetch({
-        path: `admin/search/${searchValue}/${numberOfResults}/status/${status}`,
+        path: `admin/search/${searchValue}/page/${page}/size/${pageSize}/status/${status}`,
         method: "GET"
     })
     if (!res.ok) return {

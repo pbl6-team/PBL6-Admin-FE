@@ -1,7 +1,7 @@
 import Chart from "react-apexcharts";
 import userCreatedDates from "../../api/dashboard/userCreatedDates";
 import { useEffect, useState } from "react";
-import dashBoardMonth from "../../utils/dashBoardMonth";
+import dashBoardWeek from "../../utils/dashBoardWeek";
 
 export default function Chart1({ className }) {
     const [data, setData] = useState([]);
@@ -11,7 +11,7 @@ export default function Chart1({ className }) {
         async function fetchData() {
             const res = await userCreatedDates();
 
-            const result = dashBoardMonth(res.data);
+            const result = dashBoardWeek(res.data);
             let totalValue = result.reduce((total, item) => total + item.value, 0);
             setNumberUsers(totalValue);
             setData(result);

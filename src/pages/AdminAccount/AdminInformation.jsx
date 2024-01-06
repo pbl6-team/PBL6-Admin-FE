@@ -11,21 +11,21 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Combobox } from "../../components/comboboxRole";
-import { Pencil } from "lucide-react";
+import { GanttChartSquare, Pencil } from "lucide-react";
 
 export default function AdminInformation(props) {
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Pencil className="w-6 h-6 p-1 cursor-pointer" />
+      <GanttChartSquare className="w-4 h-4 cursor-pointer" />
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-xl">
         <DialogHeader>
-          <DialogTitle>Update Admin Account</DialogTitle>
+          <DialogTitle>View Admin Account</DialogTitle>
           <DialogDescription>
-            Update to the admin account here. Click save when you're done.
+            
           </DialogDescription>
         </DialogHeader>
 
@@ -82,14 +82,14 @@ export default function AdminInformation(props) {
               />
             </div>
           </div>
-          <div className="grid w-full items-center gap-1.5">
+          {/* <div className="grid w-full items-center gap-1.5">
             <Label htmlFor="role">Role</Label>
             <Combobox className="z-0" />
-          </div>
+          </div> */}
         </div>
 
         <DialogFooter>
-          <Button type="submit">Create</Button>
+          {/* <Button type="submit">Back</Button> */}
         </DialogFooter>
       </DialogContent>
     </Dialog>

@@ -58,8 +58,11 @@ export default function ToolBar({ setData, search, setSearch, setIsSearch, setPa
           type="text"
           placeholder="search"
           onChange={(e) => setSearch(e.target.value)}
+          onKeyPress={(e) => {if (e.key === 'Enter') fetchData()}}
         />
-        <Button variant="outline" onClick={() => fetchData()}>
+        <Button variant="outline" onClick={() => fetchData()} 
+              
+        >
           <Search className="h-4 w-4" />
         </Button>
       </div>

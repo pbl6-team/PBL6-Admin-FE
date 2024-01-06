@@ -42,7 +42,7 @@ export default function AdminAccountTable({
             setTotalPages(response.data.totalPages);
         };
         fetchData();
-    }, []);
+    }, [loadData]);
 
     async function fetchPreviousData() {
         if (isSearch) {

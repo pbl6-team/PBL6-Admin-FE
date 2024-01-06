@@ -21,7 +21,7 @@ import { useEffect, useState } from "react";
 import convertDateTime from "../../utils/convertDateTime";
 import updateWorkspace from "../../api/workspace/updateWorkspace";
 import { Paginate } from "../../components/Paginate";
-import searchWorkspace from "../../api/Workspace/searchWorkspace";
+import searchWorkspace from "../../api/workspace/searchWorkspace";
 
 export default function WorkspaceTable({ data, setData, isSearch, page, setPage, totalPages, setTotalPages, status, search }) {
 

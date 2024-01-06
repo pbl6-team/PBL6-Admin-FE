@@ -1,17 +1,17 @@
 import Chart from "react-apexcharts";
-import userCreatedDates from "../../api/dashboard/userCreatedDates";
+import wsCreatedDates from "../../api/dashboard/wsCreatedDates";
 import { useEffect, useState } from "react";
-import dashBoardMonth from "../../utils/dashBoardMonth";
+import dashBoardWeek from "../../utils/dashBoardWeek";
 
-export default function Chart1({ className }) {
+export default function ChartWS({ className }) {
     const [data, setData] = useState([]);
     const [numberUsers, setNumberUsers] = useState(0);
 
     useEffect(() => {
         async function fetchData() {
-            const res = await userCreatedDates();
+            const res = await wsCreatedDates();
 
-            const result = dashBoardMonth(res.data);
+            const result = dashBoardWeek(res.data);
             let totalValue = result.reduce((total, item) => total + item.value, 0);
             setNumberUsers(totalValue);
             setData(result);
@@ -23,7 +23,7 @@ export default function Chart1({ className }) {
             <div className="flex justify-between">
                 <div className="grid grid-cols-1">
                     <span className="text-sm font-normal text-gray-500">
-                        Total users
+                        Total workspaces
                     </span>
                     <span className="text-lg font-semibold text-gray-700">
                         {numberUsers}

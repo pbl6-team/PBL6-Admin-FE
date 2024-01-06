@@ -31,6 +31,7 @@ export default function Login() {
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("tokenTimeOut", response.data.tokenTimeOut);
       localStorage.setItem("userId", response.data.userId);
+      localStorage.setItem("email", response.data.email);
       localStorage.setItem("refreshToken", response.data.refreshToken);
       localStorage.setItem("refreshTokenTimeOut", response.data.refreshTokenTimeOut);
       console.log(response.data);
@@ -87,8 +88,8 @@ export default function Login() {
               onKeyPress={(e) => {if (e.key === 'Enter') handleLogin()}}
             />
           </div>
-          <div className="flex justify-between">
-            <div className="flex items-center space-x-2">
+          <div className="flex justify-end">
+            {/* <div className="flex items-center space-x-2">
               <Checkbox id="terms" />
               <label
                 htmlFor="terms"
@@ -96,8 +97,8 @@ export default function Login() {
               >
                 Remember me
               </label>
-            </div>
-            <Button variant="link" className="text-blue-800">
+            </div> */}
+            <Button variant="link" className="text-blue-800" onClick={() => navigate("/forgot-password")}>
               Forget Password?
             </Button>
           </div>

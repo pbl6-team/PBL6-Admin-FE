@@ -1,4 +1,4 @@
-import { Menu } from "lucide-react";
+import { LogOut, Menu } from "lucide-react";
 import { useOpenUtilityBarStore } from "@/stores/useOpenUtilityBar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -6,13 +6,23 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-
+import { useNavigate } from "react-router-dom";
 export function TitleMenu(props) {
+  const navigate = useNavigate();
   const { isOpen, setUtilityBar } = useOpenUtilityBarStore();
+
   const handleClick = () => {
     setUtilityBar(!isOpen);
     console.log(!isOpen);
   };
+
+  function logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("tokenTimeOut");
+    localStorage.removeItem("refreshTokenTimeOut");
+    navigate("/login");
+  }
   return (
     <div className="fixed top-0 flex px-3 w-full items-center z-10 bg-white py-3.5">
       <div className="flex">
@@ -32,8 +42,8 @@ export function TitleMenu(props) {
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
           </PopoverTrigger>
-          <PopoverContent className="w-40 shadow flex flex-col">
-                Hieenr thij giao dien, vaf button logout
+          <PopoverContent className="w-40 shadow flex flex-col m-0 p-0">
+            <div className="w-full py-2 pl-3 hover:bg-slate-100 cursor-pointer text-sm gap-1 font-medium justify-start flex items-center" onClick={() => logout()}><LogOut className="relative top-[1px] w-3.5 h-3.5"/> <span>Logout</span></div>
           </PopoverContent>
         </Popover>
       </div>

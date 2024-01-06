@@ -9,8 +9,7 @@ import {
   SelectValue,
 } from "../../components/ui/select";
 
-import CreateDialog from "./CreateDialog";
-import { useEffect, useState } from "react";
+// import CreateDialog from "./CreateDialog";
 import searchUser from "../../api/userManagement/searchUser";
 import getUsers from "../../api/userManagement/getUsers";
 
@@ -53,7 +52,7 @@ export default function ToolBar({ setData, search, setSearch, setIsSearch, setPa
   };
 
   return (
-    <div className="flex justify-between px-4 py-2 items-center">
+    <div className="flex justify-start gap-4 px-4 py-2 items-center">
       <div className="flex w-full max-w-sm items-center space-x-2">
         <Input
           type="text"
@@ -76,7 +75,7 @@ export default function ToolBar({ setData, search, setSearch, setIsSearch, setPa
         </SelectContent>
       </Select>
 
-      <CreateDialog />
+      {/* <CreateDialog /> */}
     </div>
   );
 }

@@ -15,6 +15,7 @@ import RoleSection from "./pages/RoleManagement/RoleSection";
 import CreateRole from "./pages/RoleManagement/CreateRole";
 import { Toaster } from "@/components/ui/toaster";
 import { createBrowserRouter, redirect, RouterProvider } from "react-router-dom";
+import ForgotPassword from "./pages/Auth/ForgotPassword";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import checkTokenTimeOut from './utils/checkTokenTimeOut';
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
     path: "/login",
     element: <Login />,
     loader: loaderHomePage,
+  },
+  {
+    path: "/forgot-password",
+    element: <ForgotPassword />,
   },
   {
     path: "/notification",

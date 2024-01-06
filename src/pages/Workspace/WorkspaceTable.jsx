@@ -21,10 +21,9 @@ import { useEffect, useState } from "react";
 import convertDateTime from "../../utils/convertDateTime";
 import updateWorkspace from "../../api/workspace/updateWorkspace";
 import { Paginate } from "../../components/Paginate";
+import searchWorkspace from "../../api/Workspace/searchWorkspace";
 
-export default function WorkspaceTable({ data, setData, isSearch}) {
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
+export default function WorkspaceTable({ data, setData, isSearch, page, setPage, totalPages, setTotalPages, status, search }) {
 
   useEffect(() => {
     async function fetchData() {
@@ -34,16 +33,28 @@ export default function WorkspaceTable({ data, setData, isSearch}) {
     }
     fetchData();
   }, []);
+
   async function fetchPreviousData() {
-    console.log(page);
-    const response = await getWorkspaces(page - 1, 10);
+    if (isSearch) {
+      const response = await searchWorkspace(search, page - 1, 10, status);
+      setData(response.data.items);
+      setPage(page - 1);
+      return;
+    }
+    const response = await getWorkspaces(page - 1, 10, status);
     setData(response.data.items);
     setPage(page - 1);
   }
   async function fetchNextData() {
-    console.log(page);
-    const response = await getWorkspaces(page + 1, 10);
+    if (isSearch) {
+      const response = await searchWorkspace(search, page + 1, 10, status);
+      setData(response.data.items);
+      setPage(page + 1);
+      return;
+    }
+    const response = await getWorkspaces(page + 1, 10, status);
     setData(response.data.items);
+    console.log(response.data.items);
     setPage(page + 1);
   }
 

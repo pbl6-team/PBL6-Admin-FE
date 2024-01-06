@@ -13,7 +13,7 @@ import { Label } from "@/components/ui/label";
 import { Combobox } from "../../components/comboboxRole";
 import { GanttChartSquare, Pencil } from "lucide-react";
 
-export default function AdminInformation(props) {
+export default function AdminInformation({admin}) {
 
   return (
     <Dialog>
@@ -36,7 +36,7 @@ export default function AdminInformation(props) {
               type="email"
               id="email"
               placeholder="Email"
-              value="admin1@email.com"
+              value={admin.email}
               disabled
             />
           </div>
@@ -47,7 +47,7 @@ export default function AdminInformation(props) {
                 type="text"
                 id="username"
                 placeholder="username"
-                value="admin1"
+                value={admin.username}
                 disabled
               />
             </div>
@@ -57,7 +57,7 @@ export default function AdminInformation(props) {
                 type="text"
                 id="phone"
                 placeholder="phone"
-                value="0332837742"
+                value={admin.phone}
                 disabled
               />
             </div>
@@ -69,7 +69,8 @@ export default function AdminInformation(props) {
                 type="text"
                 id="firstName"
                 placeholder="Join"
-                value="Tran"
+                value={admin.firstName}
+                disabled
               />
             </div>
             <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -77,8 +78,8 @@ export default function AdminInformation(props) {
               <Input
                 type="text"
                 id="lastName"
-                placeholder="Nguyen"
-                value="Van"
+                value={admin.lastName}
+                disabled
               />
             </div>
           </div>
